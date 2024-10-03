@@ -1,0 +1,14 @@
+{
+    "name": "Nementic.SelectionUtility.Samples",
+    "references": [
+        "Nementic.SelectionUtility.Runtime"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": []
+}
