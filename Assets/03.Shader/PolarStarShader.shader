@@ -24,6 +24,8 @@ Shader "Oniboogie/PolarStar"
         _WhiteColor("White Color", Color) = (1,1,1,1)
         _BlackColor("Black Color", Color) = (0,0,0,1)
         _Pi5Test("Pi5 Test", Float) = 0.628318530718
+        _Tiling("Tiling", Vector) = (1,1,1,1)
+        _Offset("Offset", Vector) = (0,0,0,0)
 
         [Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
     }
@@ -105,13 +107,15 @@ Shader "Oniboogie/PolarStar"
             fixed4 _WhiteColor;
             fixed4 _BlackColor;
 
-            float _Pi5Test;
+            float _Pi5Test;            
+            float2 _Tiling;
+            float2 _Offset;
 
             float PolarStar(float2 p)
             {
                 float pi5 = 0.628318530718;
 
-                float m2 = (atan2(p.y, p.x)/_Pi5Test + 1.0) % 2.0;
+                float m2 = (atan2(p.y, p.x)/_Pi5Test + 10) % 2.0;
                 float adjust = -_Sharpness;
 
                 return length(p) * cos((_Pi5Test * adjust) * (m2 - 4.0 * step(1.0, m2) + 1.0)) - 1.0;
@@ -167,26 +171,29 @@ Shader "Oniboogie/PolarStar"
                 clip (color.a - 0.001);
                 #endif
 
-                float2 uv = IN.texcoord - 0.5;
-                uv = uv * (2.0 + float2(1.0,1.0));
+                float2 uv = IN.texcoord - 0.5 + _Offset;
+                uv = uv * (2.0 + _Tiling);
 
                 float t = 0.94 + _Rotate;
                 float2x2 rotationMatrix = float2x2(float2(cos(t), -sin(t)), float2(sin(t), cos(t)));
-                uv.xy = mul(uv.xy, rotationMatrix);
+                uv = mul(uv.xy, rotationMatrix);
                 float d = PolarStar(uv) * 5.0;
 
                 d = sin(d * _Frequency + _Time * _SineSpeed) / 10.0;
                 d = smoothstep(0.0, 0.0, d);
 
-                float clip = PolarStar(uv * 5.0 * _StarSize);
-                clip = smoothstep(1.0,1.0,clip);
+                float cl = PolarStar(uv * 5.0 * _StarSize);
+                clip(1.0 - cl);
+                cl = smoothstep(1.0,1.0,cl);                
 
-                d = d-clip;
+                d = d-cl;
 
                 fixed4 whiteCol = fixed4(d,d,d,d) * _WhiteColor;
-                fixed4 blackCol = (1.0 - fixed4(d,d,d,d + clip)) * _BlackColor;                
+                fixed4 blackCol = (1.0 - fixed4(d,d,d,d+cl)) * _BlackColor;               
                 
-                color = color * whiteCol + blackCol;
+                color = color * (whiteCol + blackCol);
+                // color = color + blackCol;
+                // color = color + whiteCol;
                 // color.rgb *= color.a;
 
                 return color;

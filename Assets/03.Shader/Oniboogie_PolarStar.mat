@@ -30,14 +30,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _Frequency: 0.945
+    - _Frequency: 6.5
     - _Pi5Test: 0.62831855
-    - _Rotate: 5.65
-    - _Sharpness: 1
-    - _SineSpeed: 3
-    - _StarSize: 1
-    - _Stencil: 0
-    - _StencilComp: 8
+    - _Rotate: 5.02
+    - _Sharpness: 0.95
+    - _SineSpeed: 47.63
+    - _StarSize: 0.74
+    - _Stencil: 1
+    - _StencilComp: 3
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
@@ -45,5 +45,7 @@ Material:
     m_Colors:
     - _BlackColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 1, a: 1}
     - _WhiteColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

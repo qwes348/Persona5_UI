@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ENABLEWIGGLE_ON
   - _SHADERFADING_NONE
   - _SHADERSPACE_UV
   m_InvalidKeywords: []
@@ -325,7 +326,7 @@ Material:
     - _EnableUVScale: 0
     - _EnableUVScroll: 0
     - _EnableVibrate: 0
-    - _EnableWiggle: 0
+    - _EnableWiggle: 1
     - _EnableWind: 0
     - _EnableWorldTiling: 0
     - _EnchantedBrightness: 1
@@ -633,7 +634,7 @@ Material:
     - _WiggleFade: 1
     - _WiggleFixedGroundToggle: 0
     - _WiggleFrequency: 2
-    - _WiggleOffset: 0.02
+    - _WiggleOffset: 0.07
     - _WiggleSpeed: 2
     - _WindFlip: 0
     - _WindHighQualityNoise: 0
@@ -780,7 +781,7 @@ Material:
     - _ShiftingColorB: {r: 1.498039, g: 0.7490196, b: 0, a: 0}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
     - _SineGlowColor: {r: 0, g: 2.007843, b: 2.996078, a: 0}
-    - _SineMoveFrequency: {r: 1, g: 1, b: 0, a: 0}
+    - _SineMoveFrequency: {r: 85.57, g: 112.61, b: 0, a: 0}
     - _SineMoveOffset: {r: 1, g: 0.5, b: 0, a: 0}
     - _SineRotatePivot: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _SineScaleFactor: {r: 0.2, g: 0.2, b: 0, a: 0}
