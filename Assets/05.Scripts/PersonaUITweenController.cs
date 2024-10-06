@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,8 @@ public class PersonaUITweenController : MonoBehaviour
     private RectTransform starMask;
     [SerializeField]
     private RectTransform whiteMask;
+    [SerializeField]
+    private Image transitionMaskSkillMenu;
 
     [Title("RawImages")]
     [SerializeField]
@@ -107,6 +110,7 @@ public class PersonaUITweenController : MonoBehaviour
                 }
                 break;
             case PersonaCanvasManager.MenuType.SkillMenu:
+                transitionMaskSkillMenu.material.SetFloat("_AlphaCutoff", 0f);
                 MaskTween_SkillMenu();
                 Joker_SkillMenu();
                 break;
@@ -147,6 +151,11 @@ public class PersonaUITweenController : MonoBehaviour
         jokerRawImages.GetContainer(PersonaCanvasManager.MenuType.SkillMenu).raw.gameObject.SetActive(false);
         PersonaCanvasManager.Instance.OnTweenComplete(PersonaCanvasManager.MenuType.SkillMenu);
         jokerAnim.PlayAnim(PersonaCanvasManager.MenuType.None);
+    }
+
+    public async UniTask TransitionSkillMenuOut()
+    {
+        await DOVirtual.Float(0f, 1f, 0.4f, v => transitionMaskSkillMenu.material.SetFloat("_AlphaCutoff", v));
     }
 }
 

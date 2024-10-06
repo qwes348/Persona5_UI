@@ -83,6 +83,7 @@ public class PersonaCanvasManager : MonoBehaviour
                 break;
             case MenuType.MainMenu:
                 menuPanels.GetContainer(menu).panelObject.SetActive(true);
+                SoundManager.Instance.PlaySfx("cancel");
                 break;
             case MenuType.SkillMenu:
                 break;
@@ -100,15 +101,16 @@ public class PersonaCanvasManager : MonoBehaviour
         ChangeMenu((MenuType)menu);
     }
 
-    public void ChangeMenu(MenuType menu)
+    public async void ChangeMenu(MenuType menu)
     {
         switch (menu)
         {
             case MenuType.None:
                 break;
             case MenuType.MainMenu:
-                menuPanels.GetContainer(MenuType.SkillMenu).panelObject.SetActive(false);
-                tweenController.PlayMenuTween(menu, isBackToMenu:true);
+                tweenController.PlayMenuTween(menu, isBackToMenu: true);
+                await tweenController.TransitionSkillMenuOut();
+                menuPanels.GetContainer(MenuType.SkillMenu).panelObject.SetActive(false);                
                 break;
             case MenuType.SkillMenu:
                 menuPanels.GetContainer(MenuType.MainMenu).panelObject.SetActive(false);

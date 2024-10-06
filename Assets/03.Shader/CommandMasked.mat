@@ -31,7 +31,7 @@ Material:
     m_Floats:
     - _ColorMask: 15
     - _Stencil: 1
-    - _StencilComp: 4
+    - _StencilComp: 3
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
