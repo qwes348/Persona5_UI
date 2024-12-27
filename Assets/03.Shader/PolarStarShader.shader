@@ -104,8 +104,7 @@ Shader "Oniboogie/PolarStar"
             float _Sharpness;
             fixed4 _WhiteColor;
             fixed4 _BlackColor;
-
-            float _Pi5Test;            
+            
             float2 _Tiling;
             float2 _Offset;
 
@@ -113,10 +112,10 @@ Shader "Oniboogie/PolarStar"
             {
                 float pi5 = 0.628318530718;
 
-                float m2 = (atan2(p.y, p.x)/_Pi5Test + 10) % 2.0;
+                float m2 = (atan2(p.y, p.x)/pi5 + 10) % 2.0;
                 float adjust = -_Sharpness;
 
-                return length(p) * cos((_Pi5Test * adjust) * (m2 - 4.0 * step(1.0, m2) + 1.0)) - 1.0;
+                return length(p) * cos((pi5 * adjust) * (m2 - 4.0 * step(1.0, m2) + 1.0)) - 1.0;
             }
 
             v2f vert(appdata_t v)
@@ -190,9 +189,6 @@ Shader "Oniboogie/PolarStar"
                 fixed4 blackCol = (1.0 - fixed4(d,d,d,d+cl)) * _BlackColor;               
                 
                 color = color * (whiteCol + blackCol);
-                // color = color + blackCol;
-                // color = color + whiteCol;
-                // color.rgb *= color.a;
 
                 return color;
             }
