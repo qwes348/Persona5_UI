@@ -1,12 +1,12 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class PersonaUITweenController : MonoBehaviour
 {
@@ -15,7 +15,8 @@ public class PersonaUITweenController : MonoBehaviour
     [SerializeField]
     private JokerAnimController jokerAnim;
 
-    [Title("Panels")]
+    [Header("Panels")]
+    [HorizontalLine]
     [SerializeField]
     private GameObject starPanel;
     [SerializeField]
@@ -23,7 +24,8 @@ public class PersonaUITweenController : MonoBehaviour
     [SerializeField]
     private GameObject blackPanel;
 
-    [Title("Masks")]
+    [Header("Masks")]
+    [HorizontalLine]
     [SerializeField]
     private RectTransform starMask;
     [SerializeField]
@@ -31,11 +33,13 @@ public class PersonaUITweenController : MonoBehaviour
     [SerializeField]
     private Image transitionMaskSkillMenu;
 
-    [Title("RawImages")]
+    [Header("RawImages")]
+    [HorizontalLine]
     [SerializeField]
     private JokerRawImages jokerRawImages;
 
-    [Title("Rot")]
+    [Header("Rot")]
+    [HorizontalLine]
     [SerializeField]
     private Vector3 starMaskInitRot;
     [SerializeField]
@@ -43,7 +47,8 @@ public class PersonaUITweenController : MonoBehaviour
     [SerializeField]
     private Vector3 starMaskSkillMenuRot;
 
-    [Title("Pos")]
+    [Header("Pos")]
+    [HorizontalLine]
     [SerializeField]
     private Vector3 starMaskInitPos;
     [SerializeField]

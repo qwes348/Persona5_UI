@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Sirenix.OdinInspector;
+using NaughtyAttributes;
 
 public class FocusEffectController : MonoBehaviour
 {

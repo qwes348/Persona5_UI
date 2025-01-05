@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 namespace Oni
 {
-    public class SingletonSerializedMono<T> : SerializedMonoBehaviour where T : SerializedMonoBehaviour
+    public class SingletonSerializedMono<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T instance = null;
         public static T Instance

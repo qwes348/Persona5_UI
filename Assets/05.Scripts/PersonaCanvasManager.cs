@@ -1,10 +1,9 @@
 using DG.Tweening;
-using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class PersonaCanvasManager : MonoBehaviour
 {
@@ -16,8 +15,6 @@ public class PersonaCanvasManager : MonoBehaviour
     private PersonaUITweenController tweenController;
     [SerializeField]
     private RectTransform shakeParent;
-
-    [Title("MenuPanels")]
     [SerializeField]
     private MenuPanels menuPanels;
 
